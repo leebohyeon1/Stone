@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public float speed;
 
     private Rigidbody2D rigid;
+
     void Awake()
     {
         rigid = GetComponent <Rigidbody2D>();
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     {
         //3. 위치 이동
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition((Vector2)transform.position + nextVec);
+        rigid.MovePosition(rigid.position + nextVec);
     }
 }
+
