@@ -40,7 +40,6 @@ namespace LBH
             Initialize();
         }
 
-
         /// <summary>
         /// 게임 시작 시 게임에 필요한 세팅 초기화
         /// </summary>
@@ -48,20 +47,25 @@ namespace LBH
         {
             int i;
 
-            for(i = 0; i < _stages.Count; i++)
+            for (i = 0; i < _stages.Count; i++)
             {
-                if (GameManager.instance.ClearStages[i])
+                if (GameManager.Instance.ClearStages[i])
                 {
                     _stages[i].ClearStage();
                 }
 
-                if ( _stages[i].IsClear())
+                if (_stages[i].IsClear())
                 {
                     _stageButtons[i].interactable = false;
                 }
-                else
+                else if (i >= 1 && _stages[i - 1].IsClear())
                 {
                     _stageButtons[i].interactable = true;
+                }
+
+                if (!_stages[0].IsClear())
+                {
+                    _stageButtons[0].interactable = true;
                 }
             }
         }
@@ -72,6 +76,7 @@ namespace LBH
         /// <param name="index">스테이지의 번호</param>
         private void LoadScene(int index)
         {
+            GameManager.Instance.CurrentStage = index;
             string sceneName = _stages[index].SceneName;
             SceneManager.LoadScene(sceneName);
         }
