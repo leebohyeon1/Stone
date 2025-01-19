@@ -4,8 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-
-
 public class test : MonoBehaviour
 {
     private Vector3 throwVector;
@@ -56,7 +54,7 @@ public class test : MonoBehaviour
         {
             Follow();
         }
-
+        
     }
 
     //마우스 클릭, 드래그?
@@ -99,4 +97,6 @@ public class test : MonoBehaviour
         transform.SetParent(bodyTransform);
         transform.localPosition = new Vector2(0f, 1.6f);
     }
+
+
 }
